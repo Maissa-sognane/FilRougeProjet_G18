@@ -2,21 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GroupeCompetencesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GroupeCompetencesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Apprenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Niveau.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Niveau.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -146,7 +147,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1596549899112</updated>
-      <workItem from="1596549900244" duration="61329000" />
+      <workItem from="1596549900244" duration="126386000" />
+      <workItem from="1596820874138" duration="20955000" />
     </task>
     <servers />
   </component>
@@ -154,13 +156,25 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596646420585">
+    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596828731110">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
-    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1596646420585" />
+    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1596828731110" />
+    <state x="740" y="448" width="430" height="179" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1596813541669">
+      <screen x="0" y="34" width="1920" height="1000" />
+    </state>
+    <state x="740" y="448" width="430" height="179" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/0.34.1920.1000@0.34.1920.1000" timestamp="1596813541669" />
     <state x="623" y="205" width="664" height="665" key="NewPhpClassDialog" timestamp="1596623802670">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
     <state x="623" y="205" width="664" height="665" key="NewPhpClassDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1596623802670" />
+    <state x="691" y="169" width="527" height="736" key="RollbackChangesDialog" timestamp="1596821278841">
+      <screen x="0" y="34" width="1920" height="1000" />
+    </state>
+    <state x="691" y="169" width="527" height="736" key="RollbackChangesDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1596821278841" />
+    <state x="540" y="238" key="run.anything.popup" timestamp="1596752961182">
+      <screen x="0" y="34" width="1920" height="1000" />
+    </state>
+    <state x="540" y="238" key="run.anything.popup/0.34.1920.1000@0.34.1920.1000" timestamp="1596752961182" />
   </component>
 </project>

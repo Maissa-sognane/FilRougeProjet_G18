@@ -9,18 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur", "cm"="CM"})
  * @ApiResource (
- *     attributes={
- *     "normalization_context"={"groups"={"read"}},
- *     "denormalization_context"={"groups"={"write"}}
- *     },
+ *     normalizationContext={"groups"={"get"}},
  *     collectionOperations={
  *          "get",
  *          "getUser"={
@@ -60,6 +54,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "security_message"="Vous n'avez pas l'acces"
  *     }
  *     })
+ * * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"user" = "User", "apprenant" = "Apprenant", "formateur" = "Formateur", "cm"="CM"})
  */
 class User implements UserInterface
 {
@@ -72,7 +70,12 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"read"})
+     * @Assert\NotBlank(
+     *     message="Champ email vide"
+     * )
+     * @Assert\Email(
+     *     message = "email invalid."
+     * )
      */
     private $email;
 
@@ -82,17 +85,37 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Groups({"read"})
+     * * @Assert\NotBlank(
+     *     message="Champ Password vide"
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Champ prenom vide"
+     * )
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Le prenom est invalid"
+     * )
+     * @Groups({"get"})
      */
     private $Prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *     message="Champ Nom vide"
+     * )
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Le nom est invalid"
+     * )
+     * @Groups({"get"})
      */
     private $Nom;
 
@@ -113,6 +136,9 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users")
+     * @Assert\NotBlank(
+     *     message="Champ profil vide"
+     * )
      */
     private $profil;
 

@@ -7,9 +7,36 @@ use App\Repository\CompetencesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *       denormalizationContext={"groups"={"post", "competence_write"}},
+ *       normalizationContext={"groups"={"competence_read"}},
+ *     collectionOperations={
+ *          "get"={
+ *             "path"="admin/competences",
+ *     },
+ *     "postcompetences"={
+ *          "path"="admin/competences",
+ *          "method"="POST",
+ *          "route_name"="createcompetences"
+ *     }
+ *     },
+ *     itemOperations={
+ *          "getcompetencesbyid"={
+ *              "path"="admin/competences/{id}",
+ *              "method"="GET",
+ *              "route_name"="listecompetencesById"
+ *     },
+ *    "updatecompetencesid"={
+ *          "method"="PUT",
+ *          "route_name"="updatecompetences",
+ *          "path"="admin/competences/{id}"
+ *     }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=CompetencesRepository::class)
  */
 class Competences
@@ -18,26 +45,39 @@ class Competences
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"post", "competence_write"})
+     * @Groups({"competence_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"post", "competence_write"})
+     * * @Assert\NotBlank(
+     *     message="Champ libelle vide"
+     * )
+     * @Groups({"competence_read", "competences"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"post", "competence_read", "competence_write"})
      */
     private $isdeleted;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"post", "competences", "competence_read", "competence_write"})
+     * * @Assert\NotBlank(
+     *     message="Champ descriptif vide"
+     * )
      */
     private $descriptif;
 
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competences")
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competences" , cascade={"persist"})
+     * @Groups({"competence_read", "post", "competence_write"})
      */
     private $niveau;
 

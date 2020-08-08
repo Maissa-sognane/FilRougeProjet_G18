@@ -14,9 +14,9 @@ use App\Entity\User;
  *              },
  *     collectionOperations={
  *          "getApprenant"={
- *               "method"="GET",
- *               "path"="/apprenants",
- *               "route_name"="ListerApprenant",
+ *              "method"="GET",
+ *              "path"="/apprenants",
+ *              "route_name"="ListerApprenant",
  *              "security"="is_granted('ROLE_FORMATEUR')",
  *              "security_message"="Vous n'avez pas l'acces"
  *     },
