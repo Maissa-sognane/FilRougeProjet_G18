@@ -17,10 +17,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     collectionOperations={
  *          "get"={
  *             "path"="admin/competences",
+ *             "security"="is_granted('VIEW', object) or is_granted('VIEW_FORMATEUR', object)",
+ *             "security_message"="vous n'avez pas acces",
  *     },
  *     "postcompetences"={
  *          "path"="admin/competences",
  *          "method"="POST",
+ *          "security"="is_granted('VIEW', object)",
+ *          "security_message"="vous n'avez pas acces",
  *          "route_name"="createcompetences"
  *     }
  *     },
@@ -28,6 +32,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "getcompetencesbyid"={
  *              "path"="admin/competences/{id}",
  *              "method"="GET",
+ *              "security"="is_granted('VIEW', object) or is_granted('VIEW_FORMATEUR', object)",
+ *              "security_message"="vous n'avez pas acces",
  *              "route_name"="listecompetencesById"
  *     },
  *    "updatecompetencesid"={
@@ -45,30 +51,30 @@ class Competences
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"post", "competence_write"})
-     * @Groups({"competence_read"})
+     * @Groups({"post", "competence_write", "get","referentiel_read"})
+     * @Groups({"competence_read","referentiel_id", "ref_grpecompetence_read", "promo_referentiel:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"post", "competence_write"})
+     * @Groups({"post", "competence_write", "get"})
      * * @Assert\NotBlank(
      *     message="Champ libelle vide"
      * )
-     * @Groups({"competence_read", "competences"})
+     * @Groups({"competence_read", "competences", "referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"post", "competence_read", "competence_write"})
+     * @Groups({"post", "competence_read", "competence_write", "get", "referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read"})
      */
     private $isdeleted;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"post", "competences", "competence_read", "competence_write"})
+     * @Groups({"post", "competences", "competence_read", "competence_write", "referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read"})
      * * @Assert\NotBlank(
      *     message="Champ descriptif vide"
      * )
@@ -77,7 +83,7 @@ class Competences
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competences" , cascade={"persist"})
-     * @Groups({"competence_read", "post", "competence_write"})
+     * @Groups({"competence_read", "post", "competence_write", "referentiel_read", "get", "ref_grpecompetence_read"})
      */
     private $niveau;
 

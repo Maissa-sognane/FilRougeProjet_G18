@@ -65,6 +65,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"promo:read", "formateurs_read", "promo:read", "promo_write", "groupe_write"})
      */
     private $id;
 
@@ -76,6 +77,7 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "email invalid."
      * )
+     * @Groups({"promo:read", "promo_write", "groupe_write"})
      */
     private $email;
 
@@ -88,6 +90,7 @@ class User implements UserInterface
      * * @Assert\NotBlank(
      *     message="Champ Password vide"
      * )
+     *
      */
     private $password;
 
@@ -101,7 +104,8 @@ class User implements UserInterface
      *     match=false,
      *     message="Le prenom est invalid"
      * )
-     * @Groups({"get"})
+     * @Groups({"get", "promo:read", "appreantgrpeprincipal:read", "appreantattente:read"})
+     * @Groups({"appreantgrpeprincipal:read"})
      */
     private $Prenom;
 
@@ -115,7 +119,7 @@ class User implements UserInterface
      *     match=false,
      *     message="Le nom est invalid"
      * )
-     * @Groups({"get"})
+     * @Groups({"get", "promo:read", "appreantgrpeprincipal:read", "appreantattente:read"})
      */
     private $Nom;
 
@@ -147,9 +151,15 @@ class User implements UserInterface
      */
     private $groupeCompetences;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Promo::class, mappedBy="user")
+     */
+    private $promos;
+
     public function __construct()
     {
         $this->groupeCompetences = new ArrayCollection();
+        $this->promos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -327,6 +337,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($groupeCompetence->getUser() === $this) {
                 $groupeCompetence->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Promo[]
+     */
+    public function getPromos(): Collection
+    {
+        return $this->promos;
+    }
+
+    public function addPromo(Promo $promo): self
+    {
+        if (!$this->promos->contains($promo)) {
+            $this->promos[] = $promo;
+            $promo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromo(Promo $promo): self
+    {
+        if ($this->promos->contains($promo)) {
+            $this->promos->removeElement($promo);
+            // set the owning side to null (unless already changed)
+            if ($promo->getUser() === $this) {
+                $promo->setUser(null);
             }
         }
 

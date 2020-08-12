@@ -4,40 +4,24 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ApprenantRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\User;
 
 /**
  * @ApiResource(
- *    attributes={"security"="is_granted('ROLE_ADMIN')",
- *                "security_message"="Vous n'avez pas l'acces"
- *              },
  *     collectionOperations={
- *          "getApprenant"={
- *              "method"="GET",
- *              "path"="/apprenants",
- *              "route_name"="ListerApprenant",
- *              "security"="is_granted('ROLE_FORMATEUR')",
- *              "security_message"="Vous n'avez pas l'acces"
  *     },
- *     "postApprenant"={
- *          "method"="POST",
- *          "path"="/apprenants",
- *          "route_name"="createApprenant"
- *     }
+ *    itemOperations={
+ *       "get"={
+ *          "path"="apprenants/{id}",
+ *          "defaults"={"id"=null}
  *     },
- *     itemOperations={
- *          "get",
- *          "getApprenantId"={
- *              "method"="GET",
- *              "path"="apprenants/{id}",
- *              "route_name"="listerApprenantById",
- *              "security"="is_granted('ROLE_FORMATEUR')",
- *              "security_message"="Vous n'avez pas l'acces"
- *     },
- *     "put"={
- *          "security"="is_granted('ROLE_FORMATEUR') or is_granted('ROLE_APPRENANT')",
- *          "security_message"="Vous n'avez pas l'acces"
+ * "postApprenant"={
+ *       "path"="/apprenants/{id}",
+ *       "method"="PUT",
+ *       "route_name"="createApprenant"
  *     }
  *     }
  * )
@@ -53,9 +37,48 @@ class Apprenant extends User
      */
     private $id;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="apprenant")
+     */
+    private $groupes;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->groupes = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->addApprenant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->contains($groupe)) {
+            $this->groupes->removeElement($groupe);
+            $groupe->removeApprenant($this);
+        }
+
+        return $this;
     }
 }

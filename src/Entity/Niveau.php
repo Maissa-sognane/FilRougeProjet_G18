@@ -16,25 +16,25 @@ class Niveau
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"competence_read", "competence_write"})
+     * @Groups({"competence_read", "competence_write", "referentiel_read", "ref_grpecompetence_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence_read", "competence_write"})
+     * @Groups({"competence_read", "competence_write", "referentiel_read", "get", "ref_grpecompetence_read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"competence_read", "competence_write"})
+     * @Groups({"competence_read", "competence_write", "referentiel_read", "get", "ref_grpecompetence_read"})
      */
     private $critereEvaluation;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"competence_read", "competence_write"})
+     * @Groups({"competence_read", "competence_write", "referentiel_read", "get", "ref_grpecompetence_read"})
      */
     private $groupeAction;
 

@@ -76,14 +76,15 @@ class GroupeCompetences
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups({"post"})
-     * @Groups({"get"})
+     * @Groups({"get", "referentiel_read","referentiel_write", "ref_grpecompetence_read", "promo_referentiel:read"})
+     *
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"post"})
-     * @Groups({"get"})
+     * @Groups({"get", "referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read"})
      * @Assert\NotBlank(
      *     message="Champ libelle vide"
      * )
@@ -93,7 +94,7 @@ class GroupeCompetences
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"post"})
+     * @Groups({"post", "referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read"})
      * @Assert\NotBlank(
      *     message="Champ description vide"
      * )
@@ -106,14 +107,14 @@ class GroupeCompetences
      * @Assert\NotBlank(
      *     message="Champ competences vide"
      * )
-     * @Groups({"get", "competences", "post"})
+     * @Groups({"get", "competences", "post", "referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read"})
      * @ApiSubresource
      */
     private $competences;
 
     /**
      * @Groups({"post"})
-     * @ORM\ManyToMany(targetEntity=Referentiel::class, inversedBy="groupeCompetences")
+     * @ORM\ManyToMany(targetEntity=Referentiel::class, inversedBy="groupeCompetences", cascade={"persist"})
      * @Assert\NotBlank(
      *     message="Champ referentiel vide"
      * )

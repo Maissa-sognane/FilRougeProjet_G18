@@ -113,26 +113,33 @@ class CompetencesController extends AbstractController
                 $niveaux->setGroupeAction($niveauxTab['groupeAction']);
                 $niveaux->setIsdeleted(false);
                 $niveaux->setCompetences($competenceObjet);
+                $manager->persist($niveaux);
+                $manager->flush();
             }
             //Creation Niveau
             if(count($niveauxTab) === 4){
                 $niveaux = $serializer->encode($niveauxTab, "json");
                 $niveaux = $serializer->deserialize($niveaux, Niveau::class, "json");
-                /*
-                $niveaux = new Niveau();
+                $niveaux->setCompetences($competenceObjet);
+               // dd($niveaux);
+               /* $niveaux = new Niveau();
                 $niveaux->setLibelle($niveauxTab['libelle']);
                 $niveaux->setCritereEvaluation($niveauxTab['critereEvaluation']);
                 $niveaux->setGroupeAction($niveauxTab['groupeAction']);
                 $niveaux->setIsdeleted(false);
-                $niveaux->setCompetences($competenceObjet);
-                $competenceObjet->addNiveau($niveaux);
-                */
+                $niveaux->setCompetences($competenceObjet);*/
+              // $competenceObjet->addNiveau($niveaux);
+             //   $manager->persist($niveaux);
+             //   $manager->flush();
+
             }
             //Suppresion Niveaux
             if(count($niveauxTab) === 1){
                 $niveaux = $rep->find($niveauxTab['id']);
                 $niveaux->setIsdeleted(true);
                 $niveaux->setCompetences($competenceObjet);
+                $manager->persist($niveaux);
+                $manager->flush();
             }
         }
         $error = $validator->validate($competenceObjet);

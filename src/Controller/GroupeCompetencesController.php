@@ -128,7 +128,6 @@ class GroupeCompetencesController extends AbstractController
     public function updategrpeComptence(Request $request, SerializerInterface $serializer, GroupeCompetencesRepository $repository,
                                         $id, ValidatorInterface $validator, EntityManagerInterface $manager,CompetencesRepository $rep){
         $grpeGroupe = $request->getContent();
-
         $groupecompetences = $serializer->decode($grpeGroupe, "json");
         $comp = $repository->find($id);
         $comp->setLibelle($groupecompetences['libelle']);
@@ -146,6 +145,7 @@ class GroupeCompetencesController extends AbstractController
                 if(count($competence) === 3){
                     $competences = $serializer->encode($competence, "json");
                     $competences = $serializer->deserialize($competences, GroupeCompetences::class, "json");
+                   // $competences->addGroupeCompetence($comp);
                     /*
                    $competences = new Competences();
                    $competences->setLibelle($competence['libelle']);
