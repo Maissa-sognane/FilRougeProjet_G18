@@ -8,10 +8,58 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 
 /**
  * @ApiResource(
  *     denormalizationContext={"groups"={"groupe_write"}},
+ *     collectionOperations={
+ *       "get"={
+ *          "path" = "admin/groupes",
+ *          "normalization_context"={"groups":"groupe:read"},
+ *          "security"="is_granted('VIEW', object)",
+ *          "security_message"="vous n'avez pas acces",
+ *     },
+ *     "getlistegroupeapprenant"={
+ *          "path"="admin/groupes/apprenants",
+ *          "method"="GET",
+ *          "route_name"="listegroupeapprenant",
+ *          "normalization_context"={"groups":"groupeapprenant:read"},
+ *          "security"="is_granted('VIEW', object)",
+ *          "security_message"="vous n'avez pas acces",
+ *     },
+ *     "postapprenantformateur"={
+ *          "path"="admin/groupes",
+ *          "method"="POST",
+ *          "route_name"="createapprenantformateur",
+ *          "security"="is_granted('VIEW', object)",
+ *          "security_message"="vous n'avez pas acces",
+ *     }
+ *     },
+ *     itemOperations={
+ *       "get"={
+ *          "path"="admin/groupes/{id}",
+ *          "normalization_context"={"groups":"groupe:read"},
+ *          "security"="is_granted('VIEW', object)",
+ *          "security_message"="vous n'avez pas acces",
+ *     },
+ *     "putapprenantgroupe"={
+ *          "path"="admin/groupes/{id}/apprenants",
+ *          "method"="PUT",
+ *          "route_name"="updateapprenantgroupe",
+ *          "security"="is_granted('VIEW', object)",
+ *          "security_message"="vous n'avez pas acces",
+ *
+ *     },
+ *     "deletegroupeapprenant"={
+ *          "path"="admin/groupes/{id}/apprenants",
+ *          "method"="DELETE",
+ *          "route_name"="deletegroupeapprenant",
+ *          "security"="is_granted('VIEW', object)",
+ *          "security_message"="vous n'avez pas acces",
+ *
+ *     }
+ *     }
  * )
  * @ORM\Entity(repositoryClass=GroupeRepository::class)
  */
@@ -21,54 +69,64 @@ class Groupe
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo:read", "appreantgrpeprincipal:read"})
+     * @Groups({"promo:read", "groupeapprenant:read" ,"appreantgrpeprincipal:read", "promoandgroupe:read", "promoformateur:read", "groupe:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo:read", "appreantgrpeprincipal:read", "promo_write", "groupe_write"})
+     * @Groups({"promo:read", "groupeapprenant:read" ,"appreantgrpeprincipal:read", "groupe:read" ,"promo_write", "groupe_write", "promoandgroupe:read", "promoformateur:read"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="date", nullable=true)
-     * @Groups({"promo:read", "appreantgrpeprincipal:read", "promo_write", "groupe_write"})
+     * @Groups({"promo:read", "appreantgrpeprincipal:read", "groupe:read" ,"promo_write", "groupe_write", "promoandgroupe:read", "promoformateur:read"})
      */
     private $dateCreation;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"promo:read", "appreantgrpeprincipal:read", "promo_write", "groupe_write"})
+     * @Groups({"promo:read", "appreantgrpeprincipal:read","groupe:read" ,"promo_write", "groupe_write", "promoandgroupe:read", "promoformateur:read"})
      */
     private $statut;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo:read", "appreantgrpeprincipal:read", "promo_write", "groupe_write"})
+     * @Groups({"promo:read", "appreantgrpeprincipal:read", "groupe:read" ,"promo_write", "groupe_write", "promoandgroupe:read", "promoformateur:read"})
      */
     private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="groupe")
+     * @Groups({"groupe:read"})
      */
     private $promo;
 
     /**
      * @ORM\ManyToMany(targetEntity=Formateur::class, inversedBy="groupes")
+     *  @Groups({"groupe:read"})
      */
     private $formateur;
 
     /**
      * @ORM\ManyToMany(targetEntity=Apprenant::class, inversedBy="groupes")
-     * @Groups({"appreantgrpeprincipal:read", "appreantattente:read", "promo_write"})
+     * @Groups({"appreantgrpeprincipal:read","groupeapprenant:read" ,"appreantattente:read", "promo_write", "groupe:read" ,"promoandgroupe:read"})
+     *
+     *
      */
     private $apprenant;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Brief::class, mappedBy="groupe")
+     */
+    private $briefs;
 
     public function __construct()
     {
         $this->formateur = new ArrayCollection();
         $this->apprenant = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -183,6 +241,34 @@ class Groupe
     {
         if ($this->apprenant->contains($apprenant)) {
             $this->apprenant->removeElement($apprenant);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->addGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->contains($brief)) {
+            $this->briefs->removeElement($brief);
+            $brief->removeGroupe($this);
         }
 
         return $this;

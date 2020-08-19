@@ -28,19 +28,18 @@ class ApprenantController extends AbstractController
      *   methods={"GET"},
      *   defaults={
      *     "_controller"="\app\ControllerApprenantController::showApprenant",
-     *     "_api_resource_class"=User::class,
+     *     "_api_resource_class"=Apprenant::class,
      *     "_api_collection_operation_name"="getApprenant",
      *    }
      * )
-     * @param UserRepository $repository
+     * @param ApprenantRepository $repository
      * @param SerializerInterface $serializer
-     * @return Response
+     * @return Apprenant[]
      */
-    public function showApprenant(UserRepository $repository, SerializerInterface $serializer)
+    public function showApprenant(ApprenantRepository $repository, SerializerInterface $serializer)
     {
-        $apprenants = $repository->findByProfil("APPRENANT");
-        $apprenants = $serializer->serialize($apprenants, "json");
-        return new JsonResponse($apprenants, Response::HTTP_OK,[],true);
+        $apprenants = $repository->findAll();
+        return $apprenants;
     }
 
     /**
@@ -105,16 +104,59 @@ class ApprenantController extends AbstractController
      * @param ApprenantRepository $repository
      * @param $id
      * @param SerializerInterface $serializer
-     * @return JsonResponse
+     * @return Apprenant
      */
     public function showApprenantById(ApprenantRepository $repository, $id, SerializerInterface $serializer)
     {
         $user = $repository->find($id);
         if($user->getProfil()->getLibelle() === "APPRENANT"){
-            $users = $serializer->serialize($user, "json");
-            return new JsonResponse($users, Response::HTTP_OK,[],true);
-        }else{
-            return $this->json("Pas trouvé", Response::HTTP_BAD_REQUEST);
+           // $users = $serializer->serialize($user, "json");
+            return $user;
+        }
+
+    }
+
+
+    /**
+     * @Route(name="createApprenant",
+     *   path="api/apprenants",
+     *   methods={"POST"},
+     *   defaults={
+     *     "_controller"="\app\ControllerUserController::createApprenant",
+     *     "_api_resource_class"=Apprenant::class,
+     *     "_api_collection_operation_name"="postApprenant",
+     *    }
+     * )
+     * @param Request $request
+     * @param ValidatorInterface $validator
+     * @param SerializerInterface $serializer
+     * @param UserPasswordEncoderInterface $encoder
+     * @param ProfilRepository $rep
+     * @param EntityManagerInterface $manager
+     * @return JsonResponse
+     */
+    public function createApprenant(Request $request, ValidatorInterface $validator, SerializerInterface $serializer,
+                               UserPasswordEncoderInterface $encoder, ProfilRepository $rep, EntityManagerInterface $manager){
+        $user = $request->getContent();
+        $userJson = $serializer->decode($user, "json");
+        $profil = explode("/", $userJson["profil"]);
+        $profil = $rep->find($profil[2]);
+        if($profil->getLibelle() === "APPRENANT"){
+            $userTab = $serializer->deserialize($user, Apprenant::class, "json");
+            $userTab->setIslogging(false);
+            $userTab->setIsDeleted(false);
+            $password = $userJson["password"];
+            $userTab->setPassword($encoder->encodePassword($userTab, $password));
+            $avatar = $request->files->get("avatar");
+            //  $avatar = fopen($avatar->getRealPath(),"br");
+            $usersJson['avatar'] = $avatar;
+            $manager->persist($userTab);
+            $manager->flush();
+            //fclose($avatar);
+            return $this->json($userTab,Response::HTTP_CREATED);
+        }
+        else{
+            return $this->json("Profil Non autorisé", Response::HTTP_BAD_REQUEST);
         }
 
     }

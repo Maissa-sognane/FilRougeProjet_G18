@@ -82,43 +82,43 @@ class Referentiel
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"referentiel_read", "appreantgrpeprincipal:read", "promo_write", "promo_referentiel:read"})
+     * @Groups({"referentiel_read", "groupe:read" ,"appreantgrpeprincipal:read", "promo_write", "promo_referentiel:read", "promoformateur:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups ({"referentiel_read","promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promo_write", "promo_referentiel:read"})
+     * @Groups ({"referentiel_read", "groupe:read" ,"promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promo_write", "promo_referentiel:read", "promoformateur:read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({ "referentiel_read","promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promo_referentiel:read"})
+     * @Groups({ "referentiel_read", "groupe:read" ,"promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promo_referentiel:read", "promoformateur:read"})
      */
     private $presentation;
 
     /**
      * @ORM\Column(type="blob", nullable=true)
-     * @Groups({ "referentiel_read","promo:read", "appreantattente:read", "promo_referentiel:read"})
+     * @Groups({ "referentiel_read","promo:read", "groupe:read" ,"appreantattente:read", "promo_referentiel:read", "promoformateur:read"})
      */
     private $programme;
 
     /**
      * @ORM\Column(type="string")
-     * @Groups({"referentiel_read","promo:read", "appreantattente:read", "promo_referentiel:read"})
+     * @Groups({"referentiel_read","promo:read", "groupe:read" ,"appreantattente:read", "promo_referentiel:read", "promoformateur:read"})
      */
     private $critereEvaluation;
 
     /**
      * @ORM\Column(type="string")
-     * @Groups({"referentiel_read","promo:read", "appreantattente:read", "promo_referentiel:read"})
+     * @Groups({"referentiel_read","promo:read", "groupe:read" ,"appreantattente:read", "promo_referentiel:read", "promoformateur:read"})
      */
     private $critereAdmission;
 
     /**
      * @ORM\ManyToMany(targetEntity=GroupeCompetences::class, mappedBy="referentiels")
-     * @Groups({"referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read"})
+     * @Groups({"referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read", "promoformateur:read"})
      * @ApiSubresource
      */
     private $groupeCompetences;
@@ -134,10 +134,16 @@ class Referentiel
      */
     private $promos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Brief::class, mappedBy="referentiel")
+     */
+    private $briefs;
+
     public function __construct()
     {
         $this->groupeCompetences = new ArrayCollection();
         $this->promos = new ArrayCollection();
+        $this->briefs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -270,6 +276,37 @@ class Referentiel
             // set the owning side to null (unless already changed)
             if ($promo->getReferentiel() === $this) {
                 $promo->setReferentiel(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brief[]
+     */
+    public function getBriefs(): Collection
+    {
+        return $this->briefs;
+    }
+
+    public function addBrief(Brief $brief): self
+    {
+        if (!$this->briefs->contains($brief)) {
+            $this->briefs[] = $brief;
+            $brief->setReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrief(Brief $brief): self
+    {
+        if ($this->briefs->contains($brief)) {
+            $this->briefs->removeElement($brief);
+            // set the owning side to null (unless already changed)
+            if ($brief->getReferentiel() === $this) {
+                $brief->setReferentiel(null);
             }
         }
 

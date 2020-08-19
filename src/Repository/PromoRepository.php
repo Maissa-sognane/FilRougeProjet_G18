@@ -107,6 +107,33 @@ class PromoRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findOnePromoGroupe($groupe, $id)
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT p, g
+        FROM App\Entity\Promo p 
+        INNER JOIN p.groupe g
+        WHERE g.id = :groupe AND p.id = :id'
+        );
+        $query->setParameter('groupe', $groupe);
+        $query->setParameter('id', $id);
+        return $query->getResult();
+    }
+
+    public function findOneProm($id)
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT p,f
+        FROM App\Entity\Promo p 
+        INNER JOIN p.formateur f
+        WHERE  p.id = :id'
+        );
+        $query->setParameter('id', $id);
+        return $query->getResult();
+    }
+
 
     /*
    public function findOneBySomeField($value): ?Promo

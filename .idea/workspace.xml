@@ -2,26 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FilRouge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FilRouge.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ApprenantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApprenantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FormateurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FormateurController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GroupeCompetencesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GroupeCompetencesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PromoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PromoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Apprenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CM.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CM.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Formateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Formateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Groupe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Groupe.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Niveau.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Niveau.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Promo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Promo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Referentiel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Referentiel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ApprenantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ApprenantRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PromoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PromoRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +164,10 @@
       <workItem from="1596549900244" duration="126386000" />
       <workItem from="1596820874138" duration="23397000" />
       <workItem from="1596882607169" duration="56925000" />
-      <workItem from="1597048390327" duration="92976000" />
+      <workItem from="1597048390327" duration="112788000" />
+      <workItem from="1597318560248" duration="23282000" />
+      <workItem from="1597391638849" duration="16464000" />
+      <workItem from="1597797868676" duration="3435000" />
     </task>
     <servers />
   </component>
@@ -176,14 +175,18 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597086121699">
+    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597427009686">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
-    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1597086121699" />
+    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1597427009686" />
     <state x="740" y="448" width="430" height="179" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1596813541669">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
     <state x="740" y="448" width="430" height="179" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/0.34.1920.1000@0.34.1920.1000" timestamp="1596813541669" />
+    <state x="100" y="134" width="1720" height="800" key="DiffContextDialog" timestamp="1597846584875">
+      <screen x="0" y="34" width="1920" height="1000" />
+    </state>
+    <state x="100" y="134" width="1720" height="800" key="DiffContextDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1597846584875" />
     <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl" timestamp="1597151754301">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
@@ -196,10 +199,10 @@
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
     <state x="691" y="169" width="527" height="736" key="RollbackChangesDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1596821278841" />
-    <state width="623" height="498" key="SwitcherDM" timestamp="1596900681964">
+    <state width="623" height="498" key="SwitcherDM" timestamp="1597410413065">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
-    <state width="623" height="498" key="SwitcherDM/0.34.1920.1000@0.34.1920.1000" timestamp="1596900681964" />
+    <state width="623" height="498" key="SwitcherDM/0.34.1920.1000@0.34.1920.1000" timestamp="1597410413065" />
     <state x="468" y="61" width="973" height="953" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596985738776">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>

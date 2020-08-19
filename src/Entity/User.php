@@ -15,12 +15,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ApiResource (
  *     normalizationContext={"groups"={"get"}},
+ *     denormalizationContext={"groups":"user:write"},
  *     collectionOperations={
- *          "get",
- *          "getUser"={
+ *          "get"={
  *              "method"="GET",
  *              "path"="admin/users",
- *              "route_name"="listerUser",
  *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Vous n'avez pas l'acces"
  *     },
@@ -29,31 +28,27 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              "path"="admin/users",
  *              "route_name"="createUser",
  *              "security"="is_granted('ROLE_ADMIN')",
- *              "security_message"="Vous n'avez pas l'acces"
+ *              "security_message"="Vous n'avez pas l'acces",
+ *
  *    },
  *     },
  *     itemOperations={
  *         "get",
- *         "getUserId"={
+ *         "get"={
  *              "method"="GET",
  *              "path"="admin/users/{id}",
- *              "route_name"="listerUserById",
  *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Vous n'avez pas l'acces"
  *     },
- *     "PUT"={
- *          "path"="admin/users/{id}",
- *          "security"="is_granted('ROLE_ADMIN')",
- *          "security_message"="Vous n'avez pas l'acces"
- *     },
  *     "putUser"={
- *           "method"="PUT",
- *           "path"="admin/users/{id}",
- *           "route_name"="editUser",
+ *          "path"="admin/users/{id}",
+ *          "method"="PUT",
+ *          "route_name"="editUser",
  *          "security"="is_granted('ROLE_ADMIN')",
  *          "security_message"="Vous n'avez pas l'acces"
  *     }
- *     })
+ *     }
+ *     )
  * * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="type", type="string")
@@ -65,7 +60,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo:read", "formateurs_read", "promo:read", "promo_write", "groupe_write"})
+     * @Groups({"promo:read", "formateurs_read", "promo:read", "promo_write", "get" ,"groupe_write", "apprenant:write"})
      */
     private $id;
 
@@ -77,7 +72,7 @@ class User implements UserInterface
      * @Assert\Email(
      *     message = "email invalid."
      * )
-     * @Groups({"promo:read", "promo_write", "groupe_write"})
+     * @Groups({"promo:read", "promo_write", "get" ,"groupe_write", "apprenant:write"})
      */
     private $email;
 
@@ -104,8 +99,8 @@ class User implements UserInterface
      *     match=false,
      *     message="Le prenom est invalid"
      * )
-     * @Groups({"get", "promo:read", "appreantgrpeprincipal:read", "appreantattente:read"})
-     * @Groups({"appreantgrpeprincipal:read"})
+     * @Groups({"get", "promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promoandgroupe:read", "promoformateur:read", "promo_write"})
+     * @Groups({"appreantgrpeprincipal:read","groupeapprenant:read" ,"groupe:read", "apprenant:write"})
      */
     private $Prenom;
 
@@ -119,7 +114,8 @@ class User implements UserInterface
      *     match=false,
      *     message="Le nom est invalid"
      * )
-     * @Groups({"get", "promo:read", "appreantgrpeprincipal:read", "appreantattente:read"})
+     * @Groups({"get", "groupe:read","groupeapprenant:read" ,"promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promoandgroupe:read", "promoformateur:read", "promo_write"})
+     * @Groups ({"apprenant:write"})
      */
     private $Nom;
 
@@ -143,6 +139,7 @@ class User implements UserInterface
      * @Assert\NotBlank(
      *     message="Champ profil vide"
      * )
+     * @Groups({"user:write"})
      */
     private $profil;
 
@@ -156,10 +153,16 @@ class User implements UserInterface
      */
     private $promos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommentaireGeneral::class, mappedBy="user")
+     */
+    private $commentaireGenerals;
+
     public function __construct()
     {
         $this->groupeCompetences = new ArrayCollection();
         $this->promos = new ArrayCollection();
+        $this->commentaireGenerals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -368,6 +371,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($promo->getUser() === $this) {
                 $promo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommentaireGeneral[]
+     */
+    public function getCommentaireGenerals(): Collection
+    {
+        return $this->commentaireGenerals;
+    }
+
+    public function addCommentaireGeneral(CommentaireGeneral $commentaireGeneral): self
+    {
+        if (!$this->commentaireGenerals->contains($commentaireGeneral)) {
+            $this->commentaireGenerals[] = $commentaireGeneral;
+            $commentaireGeneral->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaireGeneral(CommentaireGeneral $commentaireGeneral): self
+    {
+        if ($this->commentaireGenerals->contains($commentaireGeneral)) {
+            $this->commentaireGenerals->removeElement($commentaireGeneral);
+            // set the owning side to null (unless already changed)
+            if ($commentaireGeneral->getUser() === $this) {
+                $commentaireGeneral->setUser(null);
             }
         }
 
