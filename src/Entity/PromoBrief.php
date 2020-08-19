@@ -36,9 +36,20 @@ class PromoBrief
      */
     private $livrablePartiels;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="promoBriefs")
+     */
+    private $promo;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PromoBriefApprenant::class, mappedBy="promobrief")
+     */
+    private $promoBriefApprenants;
+
     public function __construct()
     {
         $this->livrablePartiels = new ArrayCollection();
+        $this->promoBriefApprenants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -95,6 +106,49 @@ class PromoBrief
             // set the owning side to null (unless already changed)
             if ($livrablePartiel->getPromobrief() === $this) {
                 $livrablePartiel->setPromobrief(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPromo(): ?Promo
+    {
+        return $this->promo;
+    }
+
+    public function setPromo(?Promo $promo): self
+    {
+        $this->promo = $promo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PromoBriefApprenant[]
+     */
+    public function getPromoBriefApprenants(): Collection
+    {
+        return $this->promoBriefApprenants;
+    }
+
+    public function addPromoBriefApprenant(PromoBriefApprenant $promoBriefApprenant): self
+    {
+        if (!$this->promoBriefApprenants->contains($promoBriefApprenant)) {
+            $this->promoBriefApprenants[] = $promoBriefApprenant;
+            $promoBriefApprenant->setPromobrief($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromoBriefApprenant(PromoBriefApprenant $promoBriefApprenant): self
+    {
+        if ($this->promoBriefApprenants->contains($promoBriefApprenant)) {
+            $this->promoBriefApprenants->removeElement($promoBriefApprenant);
+            // set the owning side to null (unless already changed)
+            if ($promoBriefApprenant->getPromobrief() === $this) {
+                $promoBriefApprenant->setPromobrief(null);
             }
         }
 

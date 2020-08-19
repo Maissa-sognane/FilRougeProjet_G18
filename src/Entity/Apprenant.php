@@ -67,11 +67,29 @@ class Apprenant extends User
      */
     private $livrables;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ProfilDeSorti::class, mappedBy="apprenant")
+     */
+    private $profilDeSortis;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PromoBriefApprenant::class, mappedBy="apprenant")
+     */
+    private $promoBriefApprenants;
+
+    /**
+     * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="apprenant")
+     */
+    private $statistiquesCompetences;
+
     public function __construct()
     {
         parent::__construct();
         $this->groupes = new ArrayCollection();
         $this->livrables = new ArrayCollection();
+        $this->profilDeSortis = new ArrayCollection();
+        $this->promoBriefApprenants = new ArrayCollection();
+        $this->statistiquesCompetences = new ArrayCollection();
     }
 
 
@@ -133,6 +151,99 @@ class Apprenant extends User
             // set the owning side to null (unless already changed)
             if ($livrable->getApprenant() === $this) {
                 $livrable->setApprenant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProfilDeSorti[]
+     */
+    public function getProfilDeSortis(): Collection
+    {
+        return $this->profilDeSortis;
+    }
+
+    public function addProfilDeSorti(ProfilDeSorti $profilDeSorti): self
+    {
+        if (!$this->profilDeSortis->contains($profilDeSorti)) {
+            $this->profilDeSortis[] = $profilDeSorti;
+            $profilDeSorti->setApprenant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfilDeSorti(ProfilDeSorti $profilDeSorti): self
+    {
+        if ($this->profilDeSortis->contains($profilDeSorti)) {
+            $this->profilDeSortis->removeElement($profilDeSorti);
+            // set the owning side to null (unless already changed)
+            if ($profilDeSorti->getApprenant() === $this) {
+                $profilDeSorti->setApprenant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PromoBriefApprenant[]
+     */
+    public function getPromoBriefApprenants(): Collection
+    {
+        return $this->promoBriefApprenants;
+    }
+
+    public function addPromoBriefApprenant(PromoBriefApprenant $promoBriefApprenant): self
+    {
+        if (!$this->promoBriefApprenants->contains($promoBriefApprenant)) {
+            $this->promoBriefApprenants[] = $promoBriefApprenant;
+            $promoBriefApprenant->setApprenant($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromoBriefApprenant(PromoBriefApprenant $promoBriefApprenant): self
+    {
+        if ($this->promoBriefApprenants->contains($promoBriefApprenant)) {
+            $this->promoBriefApprenants->removeElement($promoBriefApprenant);
+            // set the owning side to null (unless already changed)
+            if ($promoBriefApprenant->getApprenant() === $this) {
+                $promoBriefApprenant->setApprenant(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StatistiquesCompetences[]
+     */
+    public function getStatistiquesCompetences(): Collection
+    {
+        return $this->statistiquesCompetences;
+    }
+
+    public function addStatistiquesCompetence(StatistiquesCompetences $statistiquesCompetence): self
+    {
+        if (!$this->statistiquesCompetences->contains($statistiquesCompetence)) {
+            $this->statistiquesCompetences[] = $statistiquesCompetence;
+            $statistiquesCompetence->setApprenant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStatistiquesCompetence(StatistiquesCompetences $statistiquesCompetence): self
+    {
+        if ($this->statistiquesCompetences->contains($statistiquesCompetence)) {
+            $this->statistiquesCompetences->removeElement($statistiquesCompetence);
+            // set the owning side to null (unless already changed)
+            if ($statistiquesCompetence->getApprenant() === $this) {
+                $statistiquesCompetence->setApprenant(null);
             }
         }
 

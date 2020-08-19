@@ -27,6 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *              "method"="POST",
  *              "path"="admin/users",
  *              "route_name"="createUser",
+ *              "deserialize"=false,
  *              "security"="is_granted('ROLE_ADMIN')",
  *              "security_message"="Vous n'avez pas l'acces",
  *

@@ -45,6 +45,7 @@ class UserController extends AbstractController
             $userJson = $serializer->decode($user, "json");
             $profil = explode("/", $userJson["profil"]);
             $profil = $rep->find($profil[2]);
+          //  $userTab = $serializer->denormalize($userJson, User::class);
             if($profil->getLibelle() === "FORMATEUR"){
                 $userTab = $serializer->deserialize($user, Formateur::class, "json");
             }
@@ -59,11 +60,12 @@ class UserController extends AbstractController
             $password = $userJson["password"];
             $userTab->setPassword($encoder->encodePassword($userTab, $password));
             $avatar = $request->files->get("avatar");
-          //  $avatar = fopen($avatar->getRealPath(),"br");
+            $avatar = fopen($avatar->getRealPath(),"br");
+            $userTab->setAvatar($avatar);
              $usersJson['avatar'] = $avatar;
              $manager->persist($userTab);
              $manager->flush();
-            //fclose($avatar);
+             fclose($avatar);
             return $this->json($userTab,Response::HTTP_CREATED);
     }
 
