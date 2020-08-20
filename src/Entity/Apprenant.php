@@ -18,11 +18,16 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "path"="/apprenants",
  *          "route_name"="ListerApprenant",
  *          "normalization_context"={"groups":"apprenant:write"},
+ *          "security"="is_granted('ROLE_FORMATEUR') or is_granted('ROLE_CM')",
+ *          "security_message"="Vous n'avez pas l'acces"
  *     },
  *     "postApprenant"={
  *          "method"="POST",
  *          "path"="/apprenants",
- *          "route_name"="createApprenant"
+ *          "route_name"="createApprenant",
+ *          "deserialize"=false,
+ *           "security"="is_granted('ROLE_ADMIN')",
+ *          "security_message"="Vous n'avez pas l'acces"
  *     }
  *     },
  *    itemOperations={
@@ -30,21 +35,31 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *          "path"="apprenants/{id}",
  *          "defaults"={"id"=null},
  *          "normalization_context"={"groups":"apprenant:write"},
+ *           "security"="is_granted('ROLE_APPRENANT') or is_granted('ROLE_CM')",
+ *          "security_message"="Vous n'avez pas l'acces"
  *     },
  * "postApprenant"={
  *       "path"="/apprenants/{id}",
  *       "method"="PUT",
  *       "route_name"="createApprenant",
+ *       "security"="is_granted('ROLE_APPRENANT')",
+ *       "security_message"="Vous n'avez pas l'acces"
  *     },
- * "getApprenantId"={
- *       "path"="/apprenants/{id}",
- *       "method"="GET",
- *       "route_name"="listerApprenantById",
- *       "normalization_context"={"groups":"apprenant:write"},
- *     }
  *     }
  * )
  * @ORM\Entity(repositoryClass=ApprenantRepository::class)
+ */
+
+/*
+ *
+ *
+ * * "getApprenantId"={
+ *       "path"="/apprenants/{id}",
+ *       "method"="GET",
+ *       "route_name"="listerApprenantById",
+ *
+ *       "normalization_context"={"groups":"apprenant:write"},
+ *     }
  */
 class Apprenant extends User
 {

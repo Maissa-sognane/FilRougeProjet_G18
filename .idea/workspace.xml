@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/api_platform.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ApprenantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ApprenantController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Apprenant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Promo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Promo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PromoBrief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PromoBrief.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Referentiel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Referentiel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CM.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CM.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Formateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Formateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profil.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +161,8 @@
       <workItem from="1597318560248" duration="23282000" />
       <workItem from="1597391638849" duration="16464000" />
       <workItem from="1597797868676" duration="4229000" />
-      <workItem from="1597868894893" duration="3874000" />
+      <workItem from="1597868894893" duration="16304000" />
+      <workItem from="1597920366916" duration="1339000" />
     </task>
     <servers />
   </component>
@@ -181,10 +182,10 @@
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
     <state x="100" y="134" width="1720" height="800" key="DiffContextDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1597846584875" />
-    <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl" timestamp="1597151754301">
+    <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl" timestamp="1597886743644">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
-    <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl/0.34.1920.1000@0.34.1920.1000" timestamp="1597151754301" />
+    <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl/0.34.1920.1000@0.34.1920.1000" timestamp="1597886743644" />
     <state x="623" y="205" width="664" height="665" key="NewPhpClassDialog" timestamp="1596623802670">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>

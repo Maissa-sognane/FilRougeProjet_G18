@@ -13,10 +13,24 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     attributes={
+ *      },
+ *     collectionOperations={
+ *          "get"={
+ *          "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_CM')",
+ *          "security_message"="Vous n'avez pas l'acces"
+ *     }
+ *     },
  *     itemOperations={
  *       "get"={
  *          "path"="formateurs/{id}",
- *          "defaults"={"id"=null}
+ *          "defaults"={"id"=null},
+ *          "security"="is_granted('ROLE_FORMATEUR') or is_granted('ROLE_CM')",
+ *          "security_message"="Vous n'avez pas l'acces"
+ *     },
+ *     "put"={
+ *          "security"="is_granted('ROLE_ADMIN')",
+ *          "security_message"="Vous n'avez pas l'acces"
  *     }
  *     }
  *
