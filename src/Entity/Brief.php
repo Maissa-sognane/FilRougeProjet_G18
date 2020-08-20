@@ -9,7 +9,20 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *       "get"={
+ *          "method"="GET",
+ *          "path"="/formateurs/briefs/" ,
+ *     }
+ *     },
+ *     itemOperations={
+ *       "get"={
+ *          "path"="formateurs/briefs/{id}",
+ *          "method"="GET"
+ *     }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=BriefRepository::class)
  */
 class Brief

@@ -58,7 +58,7 @@ class AppFixtures extends Fixture
             ],
         ];
 
-            $profils = new Profil();
+           /* $profils = new Profil();
             $profils->setLibelle("CM");
             $profils->setIsDeleted(false);
 
@@ -76,6 +76,9 @@ class AppFixtures extends Fixture
             $manager->persist($profils);
             $manager->persist($cm);
             $manager->flush();
+           */
+
+
 
         }
 }
