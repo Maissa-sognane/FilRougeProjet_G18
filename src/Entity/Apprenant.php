@@ -82,10 +82,7 @@ class Apprenant extends User
      */
     private $livrables;
 
-    /**
-     * @ORM\OneToMany(targetEntity=ProfilDeSorti::class, mappedBy="apprenant")
-     */
-    private $profilDeSortis;
+
 
     /**
      * @ORM\OneToMany(targetEntity=PromoBriefApprenant::class, mappedBy="apprenant")
@@ -96,6 +93,11 @@ class Apprenant extends User
      * @ORM\OneToMany(targetEntity=StatistiquesCompetences::class, mappedBy="apprenant")
      */
     private $statistiquesCompetences;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ProfilDeSorti::class, inversedBy="apprenant")
+     */
+    private $profilDeSorti;
 
     public function __construct()
     {
@@ -172,36 +174,7 @@ class Apprenant extends User
         return $this;
     }
 
-    /**
-     * @return Collection|ProfilDeSorti[]
-     */
-    public function getProfilDeSortis(): Collection
-    {
-        return $this->profilDeSortis;
-    }
 
-    public function addProfilDeSorti(ProfilDeSorti $profilDeSorti): self
-    {
-        if (!$this->profilDeSortis->contains($profilDeSorti)) {
-            $this->profilDeSortis[] = $profilDeSorti;
-            $profilDeSorti->setApprenant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProfilDeSorti(ProfilDeSorti $profilDeSorti): self
-    {
-        if ($this->profilDeSortis->contains($profilDeSorti)) {
-            $this->profilDeSortis->removeElement($profilDeSorti);
-            // set the owning side to null (unless already changed)
-            if ($profilDeSorti->getApprenant() === $this) {
-                $profilDeSorti->setApprenant(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|PromoBriefApprenant[]
@@ -261,6 +234,18 @@ class Apprenant extends User
                 $statistiquesCompetence->setApprenant(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProfilDeSorti(): ?ProfilDeSorti
+    {
+        return $this->profilDeSorti;
+    }
+
+    public function setProfilDeSorti(?ProfilDeSorti $profilDeSorti): self
+    {
+        $this->profilDeSorti = $profilDeSorti;
 
         return $this;
     }

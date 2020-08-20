@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ProfilDeSortiRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,14 +27,19 @@ class ProfilDeSorti
     private $libelle;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isdeleted;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Apprenant::class, inversedBy="profilDeSortis")
+     * @ORM\OneToMany(targetEntity=Apprenant::class, mappedBy="profilDeSorti")
      */
     private $apprenant;
+
+    public function __construct()
+    {
+        $this->apprenant = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -63,14 +70,33 @@ class ProfilDeSorti
         return $this;
     }
 
-    public function getApprenant(): ?Apprenant
+    /**
+     * @return Collection|Apprenant[]
+     */
+    public function getApprenant(): Collection
     {
         return $this->apprenant;
     }
 
-    public function setApprenant(?Apprenant $apprenant): self
+    public function addApprenant(Apprenant $apprenant): self
     {
-        $this->apprenant = $apprenant;
+        if (!$this->apprenant->contains($apprenant)) {
+            $this->apprenant[] = $apprenant;
+            $apprenant->setProfilDeSorti($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApprenant(Apprenant $apprenant): self
+    {
+        if ($this->apprenant->contains($apprenant)) {
+            $this->apprenant->removeElement($apprenant);
+            // set the owning side to null (unless already changed)
+            if ($apprenant->getProfilDeSorti() === $this) {
+                $apprenant->setProfilDeSorti(null);
+            }
+        }
 
         return $this;
     }
