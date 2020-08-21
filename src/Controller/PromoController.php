@@ -23,6 +23,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class PromoController extends AbstractController
 {
+
     /**
      * @Route(name="listerefgroupe",
      *   path="api/admin/promo",

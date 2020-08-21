@@ -133,7 +133,7 @@ class Promo
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo:read", "groupe:read" ,"appreantgrpeprincipal:read", "appreantattente:read", "promo_referentiel:read", "promoandgroupe:read"})
+     * @Groups({"promo:read", "groupe:read" ,"appreantgrpeprincipal:read", "appreantattente:read", "promo_referentiel:read", "promoandgroupe:read", "briefpromogroupe:read"})
      */
     private $id;
 
@@ -145,7 +145,7 @@ class Promo
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo:read", "groupe:read" ,"promo_write", "promoandgroupe:read"})
+     * @Groups({"promo:read", "groupe:read" ,"promo_write", "promoandgroupe:read", "briefpromogroupe:read"})
      */
     private $titre;
 
@@ -228,11 +228,17 @@ class Promo
      */
     private $fileDeDiscussions;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="promo")
+     */
+    private $promobrief;
+
     public function __construct()
     {
         $this->groupe = new ArrayCollection();
         $this->formateur = new ArrayCollection();
         $this->fileDeDiscussions = new ArrayCollection();
+        $this->promobrief = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -466,6 +472,37 @@ class Promo
             // set the owning side to null (unless already changed)
             if ($fileDeDiscussion->getPromo() === $this) {
                 $fileDeDiscussion->setPromo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PromoBrief[]
+     */
+    public function getPromobrief(): Collection
+    {
+        return $this->promobrief;
+    }
+
+    public function addPromobrief(PromoBrief $promobrief): self
+    {
+        if (!$this->promobrief->contains($promobrief)) {
+            $this->promobrief[] = $promobrief;
+            $promobrief->setPromo($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromobrief(PromoBrief $promobrief): self
+    {
+        if ($this->promobrief->contains($promobrief)) {
+            $this->promobrief->removeElement($promobrief);
+            // set the owning side to null (unless already changed)
+            if ($promobrief->getPromo() === $this) {
+                $promobrief->setPromo(null);
             }
         }
 

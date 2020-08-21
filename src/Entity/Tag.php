@@ -47,6 +47,7 @@ class Tag
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"brief:read"})
      *
      */
     private $id;
@@ -54,12 +55,14 @@ class Tag
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"grpetag_write", "grpetag_read", "tag_read"})
+     * @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"grpetag_write", "grpetag_read", "tag_read"})
+     * @Groups({"brief:read"})
      */
     private $descriptif;
 

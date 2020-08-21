@@ -69,13 +69,14 @@ class Groupe
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"promo:read", "groupeapprenant:read" ,"appreantgrpeprincipal:read", "promoandgroupe:read", "promoformateur:read", "groupe:read"})
+     * @Groups({"promo:read", "groupeapprenant:read" ,"appreantgrpeprincipal:read", "promoandgroupe:read", "promoformateur:read", "groupe:read", "briefpromogroupe:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"promo:read", "groupeapprenant:read" ,"appreantgrpeprincipal:read", "groupe:read" ,"promo_write", "groupe_write", "promoandgroupe:read", "promoformateur:read"})
+     * @Groups({"promo:read", "groupeapprenant:read" ,"appreantgrpeprincipal:read", "groupe:read" ,"promo_write"})
+     * @Groups({"groupe_write", "promoandgroupe:read", "promoformateur:read", "briefpromogroupe:read"})
      */
     private $nom;
 
@@ -111,7 +112,7 @@ class Groupe
 
     /**
      * @ORM\ManyToMany(targetEntity=Apprenant::class, inversedBy="groupes")
-     * @Groups({"appreantgrpeprincipal:read","groupeapprenant:read" ,"appreantattente:read", "promo_write", "groupe:read" ,"promoandgroupe:read"})
+     * @Groups({"appreantgrpeprincipal:read","groupeapprenant:read" ,"appreantattente:read", "promo_write", "groupe:read" ,"promoandgroupe:read", "briefpromogroupe:read"})
      *
      *
      */

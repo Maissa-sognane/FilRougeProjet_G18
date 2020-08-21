@@ -100,7 +100,7 @@ class User implements UserInterface
      *     message="Le prenom est invalid"
      * )
      * @Groups({"get", "promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promoandgroupe:read", "promoformateur:read", "promo_write"})
-     * @Groups({"appreantgrpeprincipal:read","groupeapprenant:read" ,"groupe:read", "apprenant:write"})
+     * @Groups({"appreantgrpeprincipal:read","groupeapprenant:read" ,"groupe:read", "apprenant:write", "briefpromogroupe:read"})
      */
     private $Prenom;
 
@@ -115,7 +115,7 @@ class User implements UserInterface
      *     message="Le nom est invalid"
      * )
      * @Groups({"get", "groupe:read","groupeapprenant:read" ,"promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promoandgroupe:read", "promoformateur:read", "promo_write"})
-     * @Groups ({"apprenant:write"})
+     * @Groups ({"apprenant:write", "briefpromogroupe:read"})
      */
     private $Nom;
 

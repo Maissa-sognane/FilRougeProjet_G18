@@ -7,6 +7,7 @@ use App\Repository\PromoBriefRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -23,13 +24,21 @@ class PromoBrief
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"briefpromogroupe:read"})
      */
     private $statut;
 
     /**
      * @ORM\ManyToOne(targetEntity=Brief::class, inversedBy="promobrief")
+     * @Groups({"briefpromogroupe:read"})
      */
     private $brief;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="promobrief")
+     * @Groups({"briefpromogroupe:read"})
+     */
+    private $promo;
 
     /**
      * @ORM\OneToMany(targetEntity=LivrablePartiel::class, mappedBy="promobrief")
@@ -66,6 +75,18 @@ class PromoBrief
     public function setBrief(?Brief $brief): self
     {
         $this->brief = $brief;
+
+        return $this;
+    }
+
+    public function getPromo(): ?Promo
+    {
+        return $this->promo;
+    }
+
+    public function setPromo(?Promo $promo): self
+    {
+        $this->promo = $promo;
 
         return $this;
     }

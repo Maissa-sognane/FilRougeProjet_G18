@@ -53,6 +53,7 @@ class Competences
      * @ORM\Column(type="integer")
      * @Groups({"post", "competence_write", "get","referentiel_read"})
      * @Groups({"competence_read","referentiel_id", "ref_grpecompetence_read", "promo_referentiel:read"})
+     * @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $id;
 
@@ -63,6 +64,7 @@ class Competences
      *     message="Champ libelle vide"
      * )
      * @Groups({"competence_read", "competences", "referentiel_read", "ref_grpecompetence_read", "promo_referentiel:read"})
+     * @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $libelle;
 

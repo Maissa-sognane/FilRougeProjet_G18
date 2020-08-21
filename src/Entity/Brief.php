@@ -7,18 +7,29 @@ use App\Repository\BriefRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *
  *     collectionOperations={
- *       "get"={
+ *       "getbrief"={
  *          "method"="GET",
- *          "path"="/formateurs/briefs/" ,
+ *          "path"="formateurs/briefs",
+ *          "route_name"="listebrief",
+ *          "normalization_context"={"groups":"brief:read"},
+ *     },
+ *     "getbriefbygroupe"={
+ *        "method"="GET",
+ *        "path"="formateurs/promo/{id}/groupe/{groupe}/briefs",
+ *        "route_name"="listebriefbygroupe",
+ *        "normalization_context"={"groups":"briefpromogroupe:read"},
+ *
  *     }
  *     },
  *     itemOperations={
  *       "get"={
- *          "path"="formateurs/briefs/{id}",
+ *          "path"="formateur/briefs/{id}",
  *          "method"="GET"
  *     }
  *     }
@@ -31,51 +42,61 @@ class Brief
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"brief:read", "briefgroupe:read", "briefpromogroupe:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"brief:read"})
      */
     private $langue;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"brief:read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"brief:read"})
      */
     private $contexte;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"brief:read"})
      */
     private $livrableAttendus;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"brief:read"})
      */
     private $modalitePedagogique;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"brief:read"})
      */
     private $criterePerformance;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"brief:read"})
      */
     private $modaliteEvaluation;
 
     /**
      * @ORM\Column(type="blob", nullable=true)
+     *
      */
     private $avatar;
 
@@ -86,6 +107,7 @@ class Brief
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups({"brief:read"})
      */
     private $statutBrief;
 
@@ -96,36 +118,44 @@ class Brief
 
     /**
      * @ORM\OneToMany(targetEntity=Ressource::class, mappedBy="brief")
+     *  @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $ressource;
 
     /**
      * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="briefs")
+     *
+     * @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $referentiel;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs")
+     * @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $tag;
 
     /**
      * @ORM\ManyToOne(targetEntity=Formateur::class, inversedBy="briefs")
+     * @Groups({"briefpromogroupe:read"})
      */
     private $formateur;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
+     * @Groups({"briefpromogroupe:read"})
      */
     private $groupe;
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief")
+     * @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $niveau;
 
     /**
      * @ORM\ManyToMany(targetEntity=Livrableattendus::class, mappedBy="brief")
+     * @Groups({"brief:read", "briefpromogroupe:read"})
      */
     private $livrableattenduses;
 
