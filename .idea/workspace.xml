@@ -4,6 +4,9 @@
     <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
       <change beforePath="$PROJECT_DIR$/src/Controller/PromoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PromoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Brief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Brief.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
@@ -15,6 +18,7 @@
       <change beforePath="$PROJECT_DIR$/src/Entity/Ressource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ressource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+<<<<<<< HEAD
 =======
       <change beforePath="$PROJECT_DIR$/migrations/Version20200819204925.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20200820000721.php" beforeDir="false" />
@@ -22,6 +26,8 @@
       <change beforePath="$PROJECT_DIR$/src/Entity/ProfilDeSorti.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ProfilDeSortiRepository.php" beforeDir="false" />
 >>>>>>> b7785cda7e2ea33ab57f670ec5012d87963b6e7e
+=======
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,11 +180,14 @@
 <<<<<<< HEAD
       <workItem from="1597797868676" duration="3435000" />
       <workItem from="1598001459464" duration="10836000" />
+<<<<<<< HEAD
 =======
       <workItem from="1597797868676" duration="4229000" />
       <workItem from="1597868894893" duration="16304000" />
       <workItem from="1597920366916" duration="1339000" />
 >>>>>>> b7785cda7e2ea33ab57f670ec5012d87963b6e7e
+=======
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
     </task>
     <servers />
   </component>

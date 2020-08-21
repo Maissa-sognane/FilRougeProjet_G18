@@ -232,6 +232,7 @@ class Promo
      * @ORM\OneToMany(targetEntity=PromoBrief::class, mappedBy="promo")
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     private $promobrief;
 =======
     private $promoBriefs;
@@ -241,6 +242,9 @@ class Promo
      */
     private $statistiquesCompetences;
 >>>>>>> b7785cda7e2ea33ab57f670ec5012d87963b6e7e
+=======
+    private $promobrief;
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
 
     public function __construct()
     {
@@ -248,11 +252,15 @@ class Promo
         $this->formateur = new ArrayCollection();
         $this->fileDeDiscussions = new ArrayCollection();
 <<<<<<< HEAD
+<<<<<<< HEAD
         $this->promobrief = new ArrayCollection();
 =======
         $this->promoBriefs = new ArrayCollection();
         $this->statistiquesCompetences = new ArrayCollection();
 >>>>>>> b7785cda7e2ea33ab57f670ec5012d87963b6e7e
+=======
+        $this->promobrief = new ArrayCollection();
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
     }
 
     public function getId(): ?int
@@ -496,6 +504,9 @@ class Promo
      * @return Collection|PromoBrief[]
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
     public function getPromobrief(): Collection
     {
         return $this->promobrief;
@@ -506,6 +517,7 @@ class Promo
         if (!$this->promobrief->contains($promobrief)) {
             $this->promobrief[] = $promobrief;
             $promobrief->setPromo($this);
+<<<<<<< HEAD
 =======
     public function getPromoBriefs(): Collection
     {
@@ -518,12 +530,17 @@ class Promo
             $this->promoBriefs[] = $promoBrief;
             $promoBrief->setPromo($this);
 >>>>>>> b7785cda7e2ea33ab57f670ec5012d87963b6e7e
+=======
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
         }
 
         return $this;
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
     public function removePromobrief(PromoBrief $promobrief): self
     {
         if ($this->promobrief->contains($promobrief)) {
@@ -531,6 +548,7 @@ class Promo
             // set the owning side to null (unless already changed)
             if ($promobrief->getPromo() === $this) {
                 $promobrief->setPromo(null);
+<<<<<<< HEAD
 =======
     public function removePromoBrief(PromoBrief $promoBrief): self
     {
@@ -571,6 +589,8 @@ class Promo
             if ($statistiquesCompetence->getPromo() === $this) {
                 $statistiquesCompetence->setPromo(null);
 >>>>>>> b7785cda7e2ea33ab57f670ec5012d87963b6e7e
+=======
+>>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
             }
         }
 
