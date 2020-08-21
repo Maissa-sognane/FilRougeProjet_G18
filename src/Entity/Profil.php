@@ -11,7 +11,29 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProfilRepository::class)
- * @ApiResource()
+ * @ApiResource(
+ *   attributes={
+ *          "security"="is_granted('ROLE_ADMIN')",
+ *          "security_message"="Vous n'avez pas l'acces",
+ *      },
+ *   collectionOperations={
+ *      "get"={
+ *       "path"="admin/profils",
+ *     },
+ *     "post"={
+ *       "path"="admin/profils",
+ *     }
+ *
+ *     },
+ *     itemOperations={
+ *       "get"={
+ *          "path"="admin/profils/{id}",
+ *     },
+ *     "put"={
+ *          "path"="admin/profils/{id}",
+ *     }
+ *     }
+ * )
  */
 class Profil
 {

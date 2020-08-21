@@ -8,14 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Entity\User;
 
 /**
- * @ApiResource(
- *      *     itemOperations={
- *       "get"={
- *          "path"="cm/{id}",
- *          "defaults"={"id"=null}
- *     }
- *     }
- * )
+ *
  * @ORM\Entity(repositoryClass=CMRepository::class)
  */
 class CM extends User

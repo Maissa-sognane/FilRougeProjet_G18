@@ -41,29 +41,29 @@ class UserController extends AbstractController
      */
     public function createUser(Request $request, ValidatorInterface $validator, SerializerInterface $serializer,
                                 UserPasswordEncoderInterface $encoder, ProfilRepository $rep, EntityManagerInterface $manager){
-            $user = $request->getContent();
-            $userJson = $serializer->decode($user, "json");
+
+            $userJson = $request->request->all();
             $profil = explode("/", $userJson["profil"]);
             $profil = $rep->find($profil[2]);
+            $avatar = $request->files->get("avatar");
+            $avatar = fopen($avatar->getRealPath(),"rb");
+            $userJson['avatar'] = $avatar;
             if($profil->getLibelle() === "FORMATEUR"){
-                $userTab = $serializer->deserialize($user, Formateur::class, "json");
+                $userTab = $serializer->denormalize($userJson, Formateur::class);
             }
             if($profil->getLibelle() === "ADMIN"){
-                $userTab = $serializer->deserialize($user, User::class, "json");
+                $userTab = $serializer->denormalize($userJson, User::class);
             }
             if($profil->getLibelle() === "CM"){
-                $userTab = $serializer->deserialize($user, CM::class, "json");
+                $userTab = $serializer->denormalize($userJson, CM::class);
             }
+            $password = $userTab->getPassword();
+            $userTab->setPassword($encoder->encodePassword($userTab, $password));
             $userTab->setIslogging(false);
             $userTab->setIsDeleted(false);
-            $password = $userJson["password"];
-            $userTab->setPassword($encoder->encodePassword($userTab, $password));
-            $avatar = $request->files->get("avatar");
-          //  $avatar = fopen($avatar->getRealPath(),"br");
-             $usersJson['avatar'] = $avatar;
-             $manager->persist($userTab);
-             $manager->flush();
-            //fclose($avatar);
+            $manager->persist($userTab);
+            $manager->flush();
+            fclose($avatar);
             return $this->json($userTab,Response::HTTP_CREATED);
     }
 

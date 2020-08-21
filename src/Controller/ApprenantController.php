@@ -106,6 +106,7 @@ class ApprenantController extends AbstractController
      * @param SerializerInterface $serializer
      * @return Apprenant
      */
+    /*
     public function showApprenantById(ApprenantRepository $repository, $id, SerializerInterface $serializer)
     {
         $user = $repository->find($id);
@@ -115,6 +116,7 @@ class ApprenantController extends AbstractController
         }
 
     }
+    */
 
 
     /**
@@ -137,22 +139,22 @@ class ApprenantController extends AbstractController
      */
     public function createApprenant(Request $request, ValidatorInterface $validator, SerializerInterface $serializer,
                                UserPasswordEncoderInterface $encoder, ProfilRepository $rep, EntityManagerInterface $manager){
-        $user = $request->getContent();
-        $userJson = $serializer->decode($user, "json");
-        $profil = explode("/", $userJson["profil"]);
+        $user = $request->request->all();
+        $profil = explode("/", $user["profil"]);
         $profil = $rep->find($profil[2]);
+        $avatar = $request->files->get("avatar");
+        $avatar = fopen($avatar->getRealPath(),"rb");
+        $user['avatar'] = $avatar;
         if($profil->getLibelle() === "APPRENANT"){
-            $userTab = $serializer->deserialize($user, Apprenant::class, "json");
+            $userTab = $serializer->denormalize($user, Apprenant::class);
             $userTab->setIslogging(false);
             $userTab->setIsDeleted(false);
-            $password = $userJson["password"];
+            $password = $user["password"];
             $userTab->setPassword($encoder->encodePassword($userTab, $password));
-            $avatar = $request->files->get("avatar");
-            //  $avatar = fopen($avatar->getRealPath(),"br");
-            $usersJson['avatar'] = $avatar;
+
             $manager->persist($userTab);
             $manager->flush();
-            //fclose($avatar);
+            fclose($avatar);
             return $this->json($userTab,Response::HTTP_CREATED);
         }
         else{
