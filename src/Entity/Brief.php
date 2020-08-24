@@ -131,25 +131,23 @@ class Brief
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="briefs")
-     * @Groups({"brief:read", "briefpromogroupe:read"})
+     * @Groups ({"briefpromogroupe:read"})
      */
     private $tag;
 
     /**
      * @ORM\ManyToOne(targetEntity=Formateur::class, inversedBy="briefs")
-     * @Groups({"briefpromogroupe:read"})
+     *  @Groups ({"briefpromogroupe:read"})
+     *
      */
     private $formateur;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
-     * @Groups({"briefpromogroupe:read"})
-     */
+
     private $groupe;
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="brief")
-     * @Groups({"brief:read", "briefpromogroupe:read"})
+     * @Groups({"brief:read"})
      */
     private $niveau;
 
@@ -159,6 +157,11 @@ class Brief
      */
     private $livrableattenduses;
 
+    /**
+     * @ORM\OneToMany(targetEntity=BriefGroupe::class, mappedBy="brief")
+     */
+    private $groupebrief;
+
     public function __construct()
     {
         $this->promobrief = new ArrayCollection();
@@ -167,6 +170,7 @@ class Brief
         $this->groupe = new ArrayCollection();
         $this->niveau = new ArrayCollection();
         $this->livrableattenduses = new ArrayCollection();
+        $this->groupebrief = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -498,6 +502,37 @@ class Brief
         if ($this->livrableattenduses->contains($livrableattendus)) {
             $this->livrableattenduses->removeElement($livrableattendus);
             $livrableattendus->removeBrief($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BriefGroupe[]
+     */
+    public function getGroupebrief(): Collection
+    {
+        return $this->groupebrief;
+    }
+
+    public function addGroupebrief(BriefGroupe $groupebrief): self
+    {
+        if (!$this->groupebrief->contains($groupebrief)) {
+            $this->groupebrief[] = $groupebrief;
+            $groupebrief->setBrief($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupebrief(BriefGroupe $groupebrief): self
+    {
+        if ($this->groupebrief->contains($groupebrief)) {
+            $this->groupebrief->removeElement($groupebrief);
+            // set the owning side to null (unless already changed)
+            if ($groupebrief->getBrief() === $this) {
+                $groupebrief->setBrief(null);
+            }
         }
 
         return $this;

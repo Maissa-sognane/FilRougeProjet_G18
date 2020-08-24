@@ -89,6 +89,7 @@ class Referentiel
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups ({"referentiel_read", "groupe:read" ,"promo:read", "appreantgrpeprincipal:read", "appreantattente:read", "promo_write", "promo_referentiel:read", "promoformateur:read"})
+     * @Groups({ "briefpromogroupe:read"})
      */
     private $libelle;
 

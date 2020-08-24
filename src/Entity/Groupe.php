@@ -100,7 +100,7 @@ class Groupe
 
     /**
      * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="groupe")
-     * @Groups({"groupe:read"})
+     * @Groups({"groupe:read", "briefpromogroupe:read"})
      */
     private $promo;
 
@@ -118,16 +118,20 @@ class Groupe
      */
     private $apprenant;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Brief::class, mappedBy="groupe")
-     */
+
     private $briefs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BriefGroupe::class, mappedBy="groupe")
+     */
+    private $brief;
 
     public function __construct()
     {
         $this->formateur = new ArrayCollection();
         $this->apprenant = new ArrayCollection();
         $this->briefs = new ArrayCollection();
+        $this->brief = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -273,5 +277,13 @@ class Groupe
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|BriefGroupe[]
+     */
+    public function getBrief(): Collection
+    {
+        return $this->brief;
     }
 }
