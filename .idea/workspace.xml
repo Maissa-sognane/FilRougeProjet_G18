@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="" />
+    <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Brief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Brief.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Groupe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Groupe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/PromoBrief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PromoBrief.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,12 +141,6 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -178,10 +177,10 @@
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
     <state x="100" y="134" width="1720" height="800" key="DiffContextDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1597846584875" />
-    <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl" timestamp="1597886743644">
+    <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl" timestamp="1598291710611">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
-    <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl/0.34.1920.1000@0.34.1920.1000" timestamp="1597886743644" />
+    <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl/0.34.1920.1000@0.34.1920.1000" timestamp="1598291710611" />
     <state x="623" y="205" width="664" height="665" key="NewPhpClassDialog" timestamp="1596623802670">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>

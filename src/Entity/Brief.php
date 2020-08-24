@@ -116,6 +116,11 @@ class Brief
      */
     private $livrableattenduses;
 
+    /**
+     * @ORM\OneToMany(targetEntity=BriefGroupe::class, mappedBy="brief")
+     */
+    private $briefGroupes;
+
     public function __construct()
     {
         $this->promobrief = new ArrayCollection();
@@ -124,6 +129,7 @@ class Brief
         $this->groupe = new ArrayCollection();
         $this->niveau = new ArrayCollection();
         $this->livrableattenduses = new ArrayCollection();
+        $this->briefGroupes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -455,6 +461,37 @@ class Brief
         if ($this->livrableattenduses->contains($livrableattendus)) {
             $this->livrableattenduses->removeElement($livrableattendus);
             $livrableattendus->removeBrief($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BriefGroupe[]
+     */
+    public function getBriefGroupes(): Collection
+    {
+        return $this->briefGroupes;
+    }
+
+    public function addBriefGroupe(BriefGroupe $briefGroupe): self
+    {
+        if (!$this->briefGroupes->contains($briefGroupe)) {
+            $this->briefGroupes[] = $briefGroupe;
+            $briefGroupe->setBrief($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBriefGroupe(BriefGroupe $briefGroupe): self
+    {
+        if ($this->briefGroupes->contains($briefGroupe)) {
+            $this->briefGroupes->removeElement($briefGroupe);
+            // set the owning side to null (unless already changed)
+            if ($briefGroupe->getBrief() === $this) {
+                $briefGroupe->setBrief(null);
+            }
         }
 
         return $this;
