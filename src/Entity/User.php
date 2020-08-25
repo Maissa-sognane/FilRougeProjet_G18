@@ -63,6 +63,7 @@ class User implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups({"promo:read", "formateurs_read", "promo:read", "promo_write", "get" ,"groupe_write", "apprenant:write"})
+     * @Groups({"briefpromogroupe:read"})
      */
     private $id;
 
@@ -75,6 +76,7 @@ class User implements UserInterface
      *     message = "email invalid."
      * )
      * @Groups({"promo:read", "promo_write", "get" ,"groupe_write", "apprenant:write"})
+     *
      */
     private $email;
 
