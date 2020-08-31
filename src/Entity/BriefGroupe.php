@@ -7,6 +7,7 @@ use App\Repository\BriefGroupeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=BriefGroupeRepository::class)
@@ -28,9 +29,15 @@ class BriefGroupe
 
     /**
      * @ORM\ManyToOne(targetEntity=Groupe::class, inversedBy="briefGroupes")
-     * @Groups({"briefpromogroupe:read"})
+     *
      */
     private $groupe;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"briefpromogroupe:read"})
+     */
+    private $statut;
 
     public function getId(): ?int
     {
@@ -60,4 +67,19 @@ class BriefGroupe
 
         return $this;
     }
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
 }
+
+
+

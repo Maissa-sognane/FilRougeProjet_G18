@@ -9,6 +9,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+//,
+
 /**
  * @ApiResource(
  *
@@ -25,6 +27,44 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *        "route_name"="listebriefbygroupe",
  *        "normalization_context"={"groups":"briefpromogroupe:read"},
  *
+ *     },
+ *     "getbriefbyformateur"={
+ *          "method"="GET",
+ *          "path"="formateurs/promos/{id}/briefs",
+ *          "route_name"="listebriefbyformateur",
+ *          "normalization_context"={"groups":"briefpromogroupe:read"},
+ *     },
+ *     "getbriefbroullonsbyformateur"={
+ *          "path"="formateurs/{id}/briefs/broullons",
+ *          "method"="GET",
+ *          "route_name"="listebriefbroullonsformateurs",
+ *          "normalization_context"={"groups":"brief:read"},
+ *     },
+ *     "getbriefValidebyformateur"={
+ *           "path"="formateurs/{id}/briefs/valide",
+ *           "method"="GET",
+ *          "route_name"="listebriefvalideformateurs",
+ *          "normalization_context"={"groups":"brief:read"},
+ *     },
+ *     "getbriefApprenant"={
+ *          "path"="apprenants/promos/{id}/briefs",
+ *          "method"="GET",
+ *          "route_name"="listebriefApprenant",
+ *           "normalization_context"={"groups":"briefpromogroupe:read"},
+ *
+ *     },
+ *  "getbriefApprenantById"={
+ *          "path"="apprenants/promo/{id}/briefs/{brief}",
+ *          "method"="GET",
+ *          "route_name"="listebriefApprenantById",
+ *          "normalization_context"={"groups":"briefpromogroupe:read"},
+ *
+ *     },
+ *     "getpromobrief"={
+ *          "path"="formateurs/promo/{id}/briefs/{brief}",
+ *          "method"="GET",
+ *          "route_name"="listepromobrief",
+ *          "normalization_context"={"groups":"briefpromogroupe:read"},
  *     }
  *     },
  *     itemOperations={

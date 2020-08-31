@@ -107,12 +107,15 @@ class PromoController extends AbstractController
                                     UserRepository $repository, ApprenantRepository $repo, UserPasswordEncoderInterface $encoder,
                                     \Swift_Mailer $mailer)
     {
+
         $promo = $request->getContent();
         $promoArray = $serializer->decode($promo, "json");
+        //dd($promoArray['groupe'][0]['apprenant']);
         foreach ($promoArray['groupe'] as $groupe){
             $appGroupe = $serializer->encode($groupe, "json");
             $appGroupe = $serializer->deserialize($appGroupe, Groupe::class, "json");
             foreach ($groupe['apprenant'] as $apprenant) {
+              //  dd($apprenant);
                 $app = $repo->findByEmail($apprenant['email']);
                 foreach ($app as $apprenantAJout){
                     //Generation de password par defaut
@@ -151,9 +154,9 @@ class PromoController extends AbstractController
         $appGroupe->setDateCreation($date);
         $promo->setUser($user);
         $promo->addGroupe($appGroupe);
-           // dd($promo);
-       $manager->persist($appGroupe);
-       $manager->persist($promo);
+            dd($promo->getReferentiel()->getGroupeCompetences()->getValues()[0]->getCompetences()->getValues());
+      // $manager->persist($appGroupe);
+     //  $manager->persist($promo);
        $manager->flush();
         return $this->json($promo, Response::HTTP_CREATED);
     }

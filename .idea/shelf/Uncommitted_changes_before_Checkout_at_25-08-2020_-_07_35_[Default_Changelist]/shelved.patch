@@ -1,0 +1,101 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"e14071fa-e36f-46de-b98a-ef65a1847588\" name=\"Default Changelist\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/Entity/Brief.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Entity/Brief.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/Entity/Groupe.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Entity/Groupe.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/Entity/PromoBrief.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Entity/PromoBrief.php\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\" doNotAsk=\"true\" synchronizationState=\"SYNCHRONIZE\">\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\n    <execution />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"composer.json\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PhpWorkspaceProjectConfiguration\">\n    <include_path>\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/migrations\" />\n      <path value=\"$PROJECT_DIR$/vendor/webimpress/safe-writer\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/container\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/event-dispatcher\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/log\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/ocramius/proxy-manager\" />\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-eventmanager\" />\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/laminas/laminas-code\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/inflector\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/event-manager\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/lexer\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/reflection\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/collections\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/annotations\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/instantiator\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/common\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-kernel\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/persistence\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/routing\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/error-handler\" />\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/filesystem\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/cache\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/deprecation-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/string\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/framework-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php80\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/config\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-exporter\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/doctrine-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/finder\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/maker-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/flex\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/orm\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dotenv\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/stopwatch\" />\n      <path value=\"$PROJECT_DIR$/vendor/nikic/php-parser\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/service-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/console\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/dependency-injection\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/yaml\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-mbstring\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/http-foundation\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-php73\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/dbal\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/sql-formatter\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/var-dumper\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-guard\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-http\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-csrf\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/security-core\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-info\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/property-access\" />\n      <path value=\"$PROJECT_DIR$/vendor/nelmio/cors-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/webmozart/assert\" />\n      <path value=\"$PROJECT_DIR$/vendor/fig/link-util\" />\n      <path value=\"$PROJECT_DIR$/vendor/api-platform/core\" />\n      <path value=\"$PROJECT_DIR$/vendor/twig/twig\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/translation-contracts\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/asset\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/web-link\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/twig-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/serializer\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/expression-language\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/validator\" />\n      <path value=\"$PROJECT_DIR$/vendor/willdurand/negotiation\" />\n      <path value=\"$PROJECT_DIR$/vendor/psr/link\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/type-resolver\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock\" />\n      <path value=\"$PROJECT_DIR$/vendor/phpdocumentor/reflection-common\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/data-fixtures\" />\n      <path value=\"$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/namshi/jose\" />\n      <path value=\"$PROJECT_DIR$/vendor/lcobucci/jwt\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/monolog-bridge\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/monolog-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/monolog/monolog\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn\" />\n      <path value=\"$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle\" />\n      <path value=\"$PROJECT_DIR$/vendor/swiftmailer/swiftmailer\" />\n      <path value=\"$PROJECT_DIR$/vendor/egulias/email-validator\" />\n    </include_path>\n  </component>\n  <component name=\"ProjectId\" id=\"1fdZOcgY4XUFu01GLyfqNBQawqU\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../SA-C3-Groupe-18-Fil-Rouge/SA-C3-Groupe-18-Fil-Rouge\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"e14071fa-e36f-46de-b98a-ef65a1847588\" name=\"Default Changelist\" comment=\"\" />\n      <created>1596549899112</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1596549899112</updated>\n      <workItem from=\"1596549900244\" duration=\"126386000\" />\n      <workItem from=\"1596820874138\" duration=\"23397000\" />\n      <workItem from=\"1596882607169\" duration=\"56925000\" />\n      <workItem from=\"1597048390327\" duration=\"112788000\" />\n      <workItem from=\"1597318560248\" duration=\"23282000\" />\n      <workItem from=\"1597391638849\" duration=\"16464000\" />\n      <workItem from=\"1597797868676\" duration=\"4229000\" />\n      <workItem from=\"1597868894893\" duration=\"16304000\" />\n      <workItem from=\"1597920366916\" duration=\"1339000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"WindowStateProjectService\">\n    <state x=\"627\" y=\"235\" width=\"655\" height=\"605\" key=\"#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog\" timestamp=\"1597427009686\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"627\" y=\"235\" width=\"655\" height=\"605\" key=\"#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1597427009686\" />\n    <state x=\"740\" y=\"448\" width=\"430\" height=\"179\" key=\"#com.jetbrains.php.lang.intentions.PhpImportClassDialog#\" timestamp=\"1596813541669\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"740\" y=\"448\" width=\"430\" height=\"179\" key=\"#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1596813541669\" />\n    <state x=\"100\" y=\"134\" width=\"1720\" height=\"800\" key=\"DiffContextDialog\" timestamp=\"1597846584875\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"100\" y=\"134\" width=\"1720\" height=\"800\" key=\"DiffContextDialog/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1597846584875\" />\n    <state x=\"690\" y=\"235\" width=\"530\" height=\"605\" key=\"FileChooserDialogImpl\" timestamp=\"1598291710611\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"690\" y=\"235\" width=\"530\" height=\"605\" key=\"FileChooserDialogImpl/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1598291710611\" />\n    <state x=\"623\" y=\"205\" width=\"664\" height=\"665\" key=\"NewPhpClassDialog\" timestamp=\"1596623802670\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"623\" y=\"205\" width=\"664\" height=\"665\" key=\"NewPhpClassDialog/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1596623802670\" />\n    <state x=\"691\" y=\"169\" width=\"527\" height=\"736\" key=\"RollbackChangesDialog\" timestamp=\"1596821278841\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"691\" y=\"169\" width=\"527\" height=\"736\" key=\"RollbackChangesDialog/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1596821278841\" />\n    <state width=\"623\" height=\"498\" key=\"SwitcherDM\" timestamp=\"1597410413065\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state width=\"623\" height=\"498\" key=\"SwitcherDM/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1597410413065\" />\n    <state x=\"468\" y=\"61\" width=\"973\" height=\"953\" key=\"com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser\" timestamp=\"1596985738776\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"468\" y=\"61\" width=\"973\" height=\"953\" key=\"com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1596985738776\" />\n    <state x=\"701\" y=\"433\" width=\"518\" height=\"209\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1597229087022\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"701\" y=\"433\" width=\"518\" height=\"209\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1597229087022\" />\n    <state x=\"540\" y=\"238\" key=\"run.anything.popup\" timestamp=\"1597176099148\">\n      <screen x=\"0\" y=\"34\" width=\"1920\" height=\"1000\" />\n    </state>\n    <state x=\"540\" y=\"238\" key=\"run.anything.popup/0.34.1920.1000@0.34.1920.1000\" timestamp=\"1597176099148\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision b4b8413515f6a0f6866692800831bb05c3b5b84e)
++++ .idea/workspace.xml	(date 1598340831978)
+@@ -1,12 +1,31 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="BranchesTreeState">
++    <expand>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++    </expand>
++    <select>
++      <path>
++        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="BRANCH:sognane" type="e8cecc67:BranchNodeDescriptor" />
++      </path>
++    </select>
++  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Entity/Brief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Brief.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Entity/Groupe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Groupe.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Entity/PromoBrief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PromoBrief.php" afterDir="false" />
+-    </list>
++    <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -164,6 +183,29 @@
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="sognane" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+   <component name="WindowStateProjectService">
+     <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597427009686">
+       <screen x="0" y="34" width="1920" height="1000" />
+@@ -173,10 +215,10 @@
+       <screen x="0" y="34" width="1920" height="1000" />
+     </state>
+     <state x="740" y="448" width="430" height="179" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/0.34.1920.1000@0.34.1920.1000" timestamp="1596813541669" />
+-    <state x="100" y="134" width="1720" height="800" key="DiffContextDialog" timestamp="1597846584875">
++    <state x="100" y="134" width="1720" height="800" maximized="true" key="DiffContextDialog" timestamp="1598340575864">
+       <screen x="0" y="34" width="1920" height="1000" />
+     </state>
+-    <state x="100" y="134" width="1720" height="800" key="DiffContextDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1597846584875" />
++    <state x="100" y="134" width="1720" height="800" maximized="true" key="DiffContextDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1598340575864" />
+     <state x="690" y="235" width="530" height="605" key="FileChooserDialogImpl" timestamp="1598291710611">
+       <screen x="0" y="34" width="1920" height="1000" />
+     </state>
+@@ -193,6 +235,10 @@
+       <screen x="0" y="34" width="1920" height="1000" />
+     </state>
+     <state width="623" height="498" key="SwitcherDM/0.34.1920.1000@0.34.1920.1000" timestamp="1597410413065" />
++    <state x="455" y="207" width="1000" height="661" key="Vcs.Push.Dialog.v2" timestamp="1598340831569">
++      <screen x="0" y="34" width="1920" height="1000" />
++    </state>
++    <state x="455" y="207" width="1000" height="661" key="Vcs.Push.Dialog.v2/0.34.1920.1000@0.34.1920.1000" timestamp="1598340831569" />
+     <state x="468" y="61" width="973" height="953" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596985738776">
+       <screen x="0" y="34" width="1920" height="1000" />
+     </state>

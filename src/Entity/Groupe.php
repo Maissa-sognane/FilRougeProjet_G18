@@ -101,7 +101,7 @@ class Groupe
 
     /**
      * @ORM\ManyToOne(targetEntity=Promo::class, inversedBy="groupe")
-     * @Groups({"groupe:read"})
+     * @Groups({"groupe:read", "briefpromogroupe:read"})
      */
     private $promo;
 
@@ -127,6 +127,7 @@ class Groupe
 
     /**
      * @ORM\OneToMany(targetEntity=BriefGroupe::class, mappedBy="groupe")
+     *
      */
     private $briefGroupes;
 
