@@ -4,8 +4,7 @@
     <list default="true" id="e14071fa-e36f-46de-b98a-ef65a1847588" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Brief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Brief.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Groupe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Groupe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PromoBrief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PromoBrief.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/StatistiquesCompetences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StatistiquesCompetences.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,6 +164,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="531" y="34" width="838" height="1000" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598994796346">
+      <screen x="0" y="34" width="1920" height="1000" />
+    </state>
+    <state x="531" y="34" width="838" height="1000" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1598994796346" />
     <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597427009686">
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
