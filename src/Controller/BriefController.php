@@ -265,14 +265,22 @@ class BriefController extends AbstractController
      *    }
      * )
      * @param $id
-     * @param PromoBriefRepository $repoPromoBrief
-     * @return PromoBrief|PromoBrief[]|null
+     * @param BriefGroupeRepository $repoPromoBrief
+     * @param PromoRepository $repoPromo
+     * @return Brief
      */
-
-    public function showBriefApprenant($id, PromoBriefRepository $repoPromoBrief){
-        $brief = $repoPromoBrief->findBy(['promo'=>$id]);
+    public function showBriefApprenant($id, BriefGroupeRepository $repoPromoBrief, PromoRepository $repoPromo){
+       $brief = $repoPromoBrief->findAll();
+        $promo = $repoPromo->find($id);
+       foreach ($brief as $br){
+           if($br->getGroupe()->getPromo()->getId() == $id){
+               return $br->getBrief();
+           }
+       }
+      //  dd($promo->getGroupe());
         $briefdesApprenants = [];
         $briefAssignerApprenant = [];
+        /*
         foreach ($brief as $briefs){
             $briefApprenant = $briefs->getPromoBriefApprenants()->getValues();
             foreach ($briefApprenant as $brApprenant){
@@ -306,6 +314,9 @@ class BriefController extends AbstractController
             }
         }
         return $briefAssignerApprenant;
+
+        */
+
     }
 
     /**
@@ -321,13 +332,16 @@ class BriefController extends AbstractController
      * @param $id
      * @param $brief
      * @param PromoBriefRepository $repoPromoBrief
-     * @return array
+     * @return Brief
      */
 
     public function showBriefPromo($id,$brief,PromoBriefRepository $repoPromoBrief){
 
-        $promoBriefs = $repoPromoBrief->findBy(["promo"=>$id,"brief"=>$brief]);
+        $promoBriefs = $repoPromoBrief->findOneBy(["promo"=>$id,"brief"=>$brief]);
+        return $promoBriefs->getBrief();
+      //  dd($promoBriefs->getBrief());
         $briefs = [];
+        /*
         foreach ($promoBriefs as $promobrief){
             $groupes = $promobrief->getBrief()->getGroupe()->getValues();
             foreach ($groupes as $grpe){
@@ -338,8 +352,7 @@ class BriefController extends AbstractController
             $briefs[] =  $promobrief->getBrief();
         }
         return $briefs;
-
-
+        */
     }
 
 
@@ -354,17 +367,20 @@ class BriefController extends AbstractController
      *    }
      * )
      * @param $id
-     * @param PromoBriefRepository $repoPromoBrief
+     * @param BriefGroupeRepository $repoPromoBrief
+     * @param PromoRepository $repoPromo
      * @param $brief
-     * @return PromoBrief|PromoBrief[]|null
+     * @return Brief
      */
-    public function showBriefApprenantById($id, PromoBriefRepository $repoPromoBrief, $brief){
-        $apprenantBrief = $this->showBriefApprenant($id, $repoPromoBrief);
-        foreach ($apprenantBrief as $br){
-            if($br->getId() == $brief){
-                return $br;
+    public function showBriefApprenantById($id, BriefGroupeRepository $repoPromoBrief, PromoRepository $repoPromo, $brief){
+        $apprenantBrief = $this->showBriefApprenant($id, $repoPromoBrief, $repoPromo);
+            if($apprenantBrief->getId() == $brief){
+                return $apprenantBrief;
             }
-        }
+            else{
+                return $this->json("Erreur",Response::HTTP_BAD_REQUEST);
+            }
+
     }
 }
 
