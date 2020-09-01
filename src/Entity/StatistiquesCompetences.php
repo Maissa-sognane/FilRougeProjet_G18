@@ -44,6 +44,21 @@ class StatistiquesCompetences
      */
     private $promo;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $niveau1;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $niveau2;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $niveau3;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +120,42 @@ class StatistiquesCompetences
     public function setPromo(?Promo $promo): self
     {
         $this->promo = $promo;
+
+        return $this;
+    }
+
+    public function getNiveau1(): ?bool
+    {
+        return $this->niveau1;
+    }
+
+    public function setNiveau1(bool $niveau1): self
+    {
+        $this->niveau1 = $niveau1;
+
+        return $this;
+    }
+
+    public function getNiveau2(): ?bool
+    {
+        return $this->niveau2;
+    }
+
+    public function setNiveau2(bool $niveau2): self
+    {
+        $this->niveau2 = $niveau2;
+
+        return $this;
+    }
+
+    public function getNiveau3(): ?bool
+    {
+        return $this->niveau3;
+    }
+
+    public function setNiveau3(bool $niveau3): self
+    {
+        $this->niveau3 = $niveau3;
 
         return $this;
     }

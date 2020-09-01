@@ -178,10 +178,12 @@ class Brief
      */
     private $formateur;
 
+
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, inversedBy="briefs")
      * @Groups({"briefpromogroupe:read"})
      */
+
     private $groupe;
 
     /**

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Apprenant;
 use App\Entity\Groupe;
 use App\Entity\Promo;
+use App\Entity\StatistiquesCompetences;
 use App\Repository\ApprenantRepository;
 use App\Repository\FormateurRepository;
 use App\Repository\GroupeRepository;
@@ -100,17 +101,20 @@ class PromoController extends AbstractController
      * @param ApprenantRepository $repo
      * @param UserPasswordEncoderInterface $encoder
      * @param \Swift_Mailer $mailer
+     * @param ReferentielRepository $repoReferentiel
      * @return JsonResponse
      * @throws Exception
      */
     public function createPromo(Request $request,SerializerInterface $serializer, EntityManagerInterface $manager, ReferentielRepository $rep,
                                     UserRepository $repository, ApprenantRepository $repo, UserPasswordEncoderInterface $encoder,
-                                    \Swift_Mailer $mailer)
+                                    \Swift_Mailer $mailer, ReferentielRepository $repoReferentiel)
     {
 
         $promo = $request->getContent();
         $promoArray = $serializer->decode($promo, "json");
         //dd($promoArray['groupe'][0]['apprenant']);
+        $ref = $repoReferentiel->find($promoArray['referentiel']['id']);
+        $groupeCompetences = $ref->getGroupeCompetences()->getValues();
         foreach ($promoArray['groupe'] as $groupe){
             $appGroupe = $serializer->encode($groupe, "json");
             $appGroupe = $serializer->deserialize($appGroupe, Groupe::class, "json");
@@ -140,6 +144,7 @@ class PromoController extends AbstractController
                     ;
                     $mailer->send($message);
                     $appGroupe->addApprenant($apprenantAJout);
+
                 }
             }
         }
@@ -154,9 +159,32 @@ class PromoController extends AbstractController
         $appGroupe->setDateCreation($date);
         $promo->setUser($user);
         $promo->addGroupe($appGroupe);
-            dd($promo->getReferentiel()->getGroupeCompetences()->getValues()[0]->getCompetences()->getValues());
-      // $manager->persist($appGroupe);
-     //  $manager->persist($promo);
+        //  dd($promo->getReferentiel()->getGroupeCompetences()->getValues()[0]->getCompetences()->getValues());
+      $manager->persist($appGroupe);
+      $manager->persist($promo);
+
+        foreach ($promoArray['groupe'] as $groupe) {
+            foreach ($groupe['apprenant'] as $apprenant) {
+                $app = $repo->findByEmail($apprenant['email']);
+                foreach ($app as $apprenantAJout) {
+                    foreach ($groupeCompetences as $grpeCompetences) {
+                        $competences = $grpeCompetences->getCompetences()->getValues();
+                        foreach ($competences as $comp) {
+                            $statistique = new StatistiquesCompetences();
+                            $statistique->setApprenant($apprenantAJout);
+                            $statistique->setLibelle("null");
+                            $statistique->setPromo($promo);
+                            $statistique->setReferentiel($ref);
+                            $statistique->setCompetence($comp);
+                            $statistique->setNiveau1(false);
+                            $statistique->setNiveau2(false);
+                            $statistique->setNiveau3(false);
+                            $manager->persist($statistique);
+                        }
+                    }
+                }
+            }
+        }
        $manager->flush();
         return $this->json($promo, Response::HTTP_CREATED);
     }

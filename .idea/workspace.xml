@@ -13,6 +13,7 @@
 >>>>>>> 1dc2edd... affichage brief_route1 et briefroute_2 existe
       <change beforePath="$PROJECT_DIR$/src/Controller/PromoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PromoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Brief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Brief.php" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Groupe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Groupe.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Livrableattendus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Livrableattendus.php" afterDir="false" />
@@ -37,6 +38,9 @@
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
 >>>>>>> b6cb5d0f840a5685a02d7b1a8c4e27eb543c1101
+=======
+      <change beforePath="$PROJECT_DIR$/src/Entity/StatistiquesCompetences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StatistiquesCompetences.php" afterDir="false" />
+>>>>>>> 1e44c6d30e2e52f43532fd0c9d1c848e8f2aa025
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +212,15 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597967860432">
+=======
+    <state x="531" y="34" width="838" height="1000" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598994796346">
+      <screen x="0" y="34" width="1920" height="1000" />
+    </state>
+    <state x="531" y="34" width="838" height="1000" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1598994796346" />
+    <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597427009686">
+>>>>>>> 1e44c6d30e2e52f43532fd0c9d1c848e8f2aa025
       <screen x="0" y="34" width="1920" height="1000" />
     </state>
     <state x="627" y="235" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.34.1920.1000@0.34.1920.1000" timestamp="1597967860432" />
